@@ -1,0 +1,17 @@
+matches:
+  - trigger: ":wk"
+    replace: "{{weekNum}}"
+    vars:
+      - name: weekNum
+        type: date
+        params:
+          format: "%U"
+          locale: "en-GB"
+          offset: -86400
+  - trigger: ":zks"
+    replace: "{{timestamp}}"
+    vars:
+      - name: timestamp
+        type: date
+        params:
+          format: "%Y%m%d%H%M%S"
