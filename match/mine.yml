@@ -15,3 +15,10 @@ matches:
         type: date
         params:
           format: "%Y%m%d%H%M%S"
+  - trigger: ":wtc"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "(Invoke-WebRequest -Uri whatthecommit.com/index.txt).Content"
