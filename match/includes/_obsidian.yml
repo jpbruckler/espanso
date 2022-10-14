@@ -1,0 +1,7 @@
+matches:
+  - trigger: ":obs"
+    replace: "hello from obsidian"
+  - regex: ":fnr(?P<num>\\d)"
+    replace: "[^{{num}}]"
+  - regex: ":fnl(?P<num>\\d)"
+    replace: "[^{{num}}]: "

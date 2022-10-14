@@ -8,17 +8,12 @@ matches:
           format: "%U"
           locale: "en-GB"
           offset: -86400
-  - trigger: ":zks"
-    replace: "{{timestamp}}"
-    vars:
-      - name: timestamp
-        type: date
-        params:
-          format: "%Y%m%d%H%M%S"
-  - trigger: ":wtc"
-    replace: "{{output}}"
-    vars:
-      - name: output
-        type: shell
-        params:
-          cmd: "(Invoke-WebRequest -Uri whatthecommit.com/index.txt).Content"
+  - trigger: ":esD"
+    replace: |
+        - trigger: ":"
+            replace: "{{}}"
+            vars: 
+        - name: reference
+            type: date
+            params:
+              format: ""
