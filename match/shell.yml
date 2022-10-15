@@ -13,3 +13,7 @@ matches:
         type: shell
         params:
           cmd: "(New-Guid).Guid"
+  - trigger: ":ghd"
+    replace: "cd gh:\\"
+  - trigger: ":ghc"
+    replace: "cd gh:\\conservatorium"
