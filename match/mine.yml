@@ -22,3 +22,5 @@ matches:
         type: shell
         params:
           cmd: "(Invoke-WebRequest -Uri whatthecommit.com/index.txt).Content"
+  - trigger: ":upn"
+    replace: "john.bruckler@dtmidstream.com"
