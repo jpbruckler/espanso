@@ -1,0 +1,8 @@
+matches:
+  - trigger: ":sig"
+    replace: |
+      Best,
+      John Bruckler
+      tw: @jpbruckler
+      li: https://www.linkedin.com/in/johnbruckler/
+      http: http://jpbruckler.github.io

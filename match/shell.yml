@@ -1,0 +1,19 @@
+matches:
+  - trigger: ":wtc"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "(Invoke-WebRequest -Uri whatthecommit.com/index.txt).Content"
+  - trigger: ":guid"
+    replace: "{{guid}}"
+    vars:
+      - name: guid
+        type: shell
+        params:
+          cmd: "(New-Guid).Guid"
+  - trigger: ":ghd"
+    replace: "cd gh:\\"
+  - trigger: ":ghc"
+    replace: "cd gh:\\conservatorium"
