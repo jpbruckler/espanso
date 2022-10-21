@@ -6,3 +6,19 @@ matches:
       tw: @jpbruckler
       li: https://www.linkedin.com/in/johnbruckler/
       http: http://jpbruckler.github.io
+  - trigger: ":weekly"
+    replace: "[14.03] Weekly update - Week {{weekNum}}" 
+    vars:
+      - name: weekNum
+        type: date
+        params:
+          format: "%U"
+          locale: "en-GB"
+          offset: -86400 
+  - trigger: ":dtmsig"
+    replace: |
+      John Bruckler 
+      DT Midstream | IT Cybersecurity 
+      500 Woodward Ave. Ste. 2900, Detroit, MI 48226 
+      [m] 517.513.4312 
+      www.dtmidstream.com  
