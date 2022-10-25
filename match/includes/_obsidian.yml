@@ -5,3 +5,14 @@ matches:
     replace: "[^{{num}}]"
   - regex: ":fnl(?P<num>\\d)"
     replace: "[^{{num}}]: "
+  - trigger: ":ddbmons"
+    replace: "[{{form1.monster}}](https://www.dndbeyond.com/monsters/{{monster_lower}})"
+    vars:
+      - name: "form1"
+        type: form
+        params:
+          layout: "Monster: [[monster]]"
+      - name: monster_lower
+        type: shell
+        params: 
+          cmd: "'{{form1.monster}}'.toLower().replace(' ','-')"
