@@ -5,47 +5,25 @@ matches:
     replace: "[^{{num}}]"
   - regex: ":fnl(?P<num>\\d)"
     replace: "[^{{num}}]: "
-  - trigger: ":ddbmons"
-    replace: "[{{form1.monster}}](https://www.dndbeyond.com/monsters/{{monster_lower}})"
+  - trigger: ".ddb"
+    replace: "[{{ddbform.item}}](https://ddb.ac/{{ddbform.choice}}/{{item_lower}})"
     vars:
-      - name: "form1"
+      - name: "ddbform"
         type: form
         params:
-          layout: "Monster: [[monster]]"
-      - name: monster_lower
-        type: shell
-        params: 
-          cmd: "'{{form1.monster}}'.toLower().replace(' ','-')"
-  - trigger: ":ddbspell"
-    replace: "[{{form1.spell}}](https://www.dndbeyond.com/spell/{{spell_lower}})"
-    vars:
-      - name: "form1"
-        type: form
-        params:
-          layout: "Spell: [[spell]]"
-      - name: spell_lower
-        type: shell
-        params: 
-          cmd: "'{{form1.spell}}'.toLower().replace(' ','-')"
-  - trigger: ":ddbmi"
-    replace: "[{{form1.magicitem}}](https://www.dndbeyond.com/magic-items/{{magicitem_lower}})"
-    vars:
-      - name: "form1"
-        type: form
-        params:
-          layout: "Magic Item: [[magicitem]]"
-      - name: magicitem_lower
-        type: shell
-        params: 
-          cmd: "'{{form1.magicitem}}'.toLower().replace(' ','-')"
-  - trigger: ":ddbeq"
-    replace: "[{{form1.item}}](https://www.dndbeyond.com/equipment/{{item_lower}})"
-    vars:
-      - name: "form1"
-        type: form
-        params:
-          layout: "Equipment: [[item]]"
+          layout: "Type: [[choice]] \nItem: [[item]]"
+          fields:
+            choice:
+              type: list
+              values:
+                - 'backgrounds'
+                - 'characters'
+                - 'equipment'
+                - 'magic-items'
+                - 'monsters'
+                - 'races'
+                - 'vehicles'
       - name: item_lower
         type: shell
         params: 
-          cmd: "'{{form1.item}}'.toLower().replace(' ','-')"
+          cmd: "'{{ddbform.item}}'.toLower().replace(' ','-')"
