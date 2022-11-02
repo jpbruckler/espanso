@@ -1,6 +1,8 @@
 matches:
-  - trigger: ":obs"
-    replace: "hello from obsidian"
+  - trigger: "@sem"
+    replace: "[[@Steven Motts]]"
+  - trigger: "@ah"
+    replace: "[[@Alyse Hart]]"
   - regex: ":fnr(?P<num>\\d)"
     replace: "[^{{num}}]"
   - regex: ":fnl(?P<num>\\d)"
