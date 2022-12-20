@@ -21,4 +21,8 @@ matches:
       DT Midstream | IT Cybersecurity 
       500 Woodward Ave. Ste. 2900, Detroit, MI 48226 
       [m] 517.513.4312 
-      www.dtmidstream.com  
+      www.dtmidstream.com
+  - trigger: ":phblock"
+    image_path: "$CONFIG/images/block_sender.gif"
+  - trigger: ":phspam"
+    replace: 'Thank you for <span style="font-weight: bold">reporting the email</b>. This is not a phishing email, however it would be classified as SPAM. Feel free to delete the email and block the sender (see below) if you do not wish to receive email</span> from this sender in the future.<br />'

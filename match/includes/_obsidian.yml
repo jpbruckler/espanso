@@ -30,6 +30,4 @@ matches:
         params: 
           cmd: "'{{ddbform.item}}'.toLower().replace(' ','-')"
   - trigger: ".mblk"
-    replace: |
-      > [!metablock]+
-      > - related:: 
+    replace: "> [!metablock]+\n - related:: "

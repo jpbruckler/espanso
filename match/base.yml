@@ -33,5 +33,11 @@ matches:
         type: shell
         params:
           cmd: "echo 'Hello from your shell'"
-
+  - trigger: ":ts"
+    replace: "{{timestamp}}"
+    vars:
+      - name: timestamp
+        type: date
+        params:
+          format: "%+"
   # And much more! For more information, visit the docs: https://espanso.org/docs/
