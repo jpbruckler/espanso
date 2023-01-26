@@ -1,11 +1,28 @@
+global_vars:
+  - name: "people"
+    type: echo
+    params:
+      echo: "@{ 
+                'bb'  = 'Brandi Bruckler';
+                'mb'  = 'Michael Bruckler';
+                'mom' = 'Roxanne Bruckler';
+                'sb'  = 'Sarah Bruckler';
+                'lsm' = 'Laura St Marie';
+                'kra' = 'Kyle Andrus';
+                'ba'  = 'Bryan Adams';
+                'sem' = 'Steven Motts'; 
+                'ah'  = 'Alyse Hart';
+                'dk'  = 'Dan Karrick';
+                'bk'  = 'Brian Kissick';
+                'cb'  = 'Chris Bentley';
+                'gr'  = 'Gytis Radvilavicius';
+                'jw'  = 'Jori Walker';
+                'rh'  = 'Rick Hart';
+              }"
 matches:
-  - trigger: "@sem"
-    replace: "[[@Steven Motts]]"
-  - trigger: "@ah"
-    replace: "[[@Alyse Hart]]"
-  - regex: ":fnr(?P<num>\\d)"
+  - regex: ":.nr(?P<num>\\d)"
     replace: "[^{{num}}]"
-  - regex: ":fnl(?P<num>\\d)"
+  - regex: ".fnl(?P<num>\\d)"
     replace: "[^{{num}}]: "
   - trigger: ".ddb"
     replace: "[{{ddbform.item}}](https://ddb.ac/{{ddbform.choice}}/{{item_lower}})"
@@ -31,3 +48,10 @@ matches:
           cmd: "'{{ddbform.item}}'.toLower().replace(' ','-')"
   - trigger: ".mblk"
     replace: "> [!metablock]+\n - related:: "
+  - regex: "(/(?P<initials>\\w{2,3})\\s)"
+    replace: "[[@{{name}}]] "
+    vars:
+      - name: name
+        type: shell
+        params:
+          cmd: "{{people}} | % { $_.'{{initials}}' };"
