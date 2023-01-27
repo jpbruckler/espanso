@@ -9,14 +9,14 @@ global_vars:
                 'sb'  = 'Sarah Bruckler';
                 'lsm' = 'Laura St Marie';
                 'kra' = 'Kyle Andrus';
-                'ba'  = 'Bryan Adams';
                 'sem' = 'Steven Motts'; 
                 'ah'  = 'Alyse Hart';
-                'dk'  = 'Dan Karrick';
+                'ba'  = 'Brandyn Adams';
                 'bk'  = 'Brian Kissick';
-                'cb'  = 'Chris Bentley';
                 'gr'  = 'Gytis Radvilavicius';
                 'jw'  = 'Jori Walker';
+                'dk'  = 'Dan Karrick';
+                'cb'  = 'Chris Bentley';
                 'rh'  = 'Rick Hart';
               }"
 matches:
@@ -48,7 +48,7 @@ matches:
           cmd: "'{{ddbform.item}}'.toLower().replace(' ','-')"
   - trigger: ".mblk"
     replace: "> [!metablock]+\n - related:: "
-  - regex: "(/(?P<initials>\\w{2,3})\\s)"
+  - regex: "(:(?P<initials>\\w{2,3})\\s)"
     replace: "[[@{{name}}]] "
     vars:
       - name: name
