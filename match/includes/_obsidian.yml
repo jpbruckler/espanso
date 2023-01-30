@@ -48,8 +48,8 @@ matches:
           cmd: "'{{ddbform.item}}'.toLower().replace(' ','-')"
   - trigger: ".mblk"
     replace: "> [!metablock]+\n - related:: "
-  - regex: "(:(?P<initials>\\w{2,3})\\s)"
-    replace: "[[@{{name}}]] "
+  - regex: "(:(?P<initials>\\w{2,3})(?P<end>[\\s,]))"
+    replace: "[[@{{name}}]]{{end}}"
     vars:
       - name: name
         type: shell
