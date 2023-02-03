@@ -38,6 +38,8 @@ matches:
         type: date
         params:
           format: "%+"
+  - trigger: ":ld"
+    replace: "—"
   - trigger: ":copchain"
     replace: "A 22-inch copper ball chain is included with this purchase."
   - trigger: ":ogbox"
