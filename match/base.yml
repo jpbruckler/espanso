@@ -46,4 +46,11 @@ matches:
     replace: "For an additional fee, this pendant can be shipped in a sturdy, handcrafted origami gift box."
   - trigger: ":ojs"
     replace: "Overall jewelry size is "
+  - trigger: ".t"
+    replace: "	"
+  - trigger: ":t"
+    replace: "	"
+  - trigger: ":2t"
+    replace: "		"
+    
 
