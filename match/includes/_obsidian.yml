@@ -20,38 +20,77 @@ global_vars:
                 'rh'  = 'Rick Hart';
               }"
 matches:
-  - regex: ":.nr(?P<num>\\d)"
+  - regex: ";fn(?P<num>\\d)"
     replace: "[^{{num}}]"
-  - regex: ".fnl(?P<num>\\d)"
+  - regex: ";fnl(?P<num>\\d)"
+    label: "Insert a markdown footnote link."
     replace: "[^{{num}}]: "
-  - trigger: ".ddb"
-    replace: "[{{ddbform.item}}](https://ddb.ac/{{ddbform.choice}}/{{item_lower}})"
-    vars:
-      - name: "ddbform"
-        type: form
-        params:
-          layout: "Type: [[choice]] \nItem: [[item]]"
-          fields:
-            choice:
-              type: list
-              values:
-                - 'backgrounds'
-                - 'characters'
-                - 'equipment'
-                - 'magic-items'
-                - 'monsters'
-                - 'races'
-                - 'vehicles'
-      - name: item_lower
-        type: shell
-        params: 
-          cmd: "'{{ddbform.item}}'.toLower().replace(' ','-')"
-  - trigger: ".mblk"
-    replace: "> [!metablock]+\n - related:: "
-  - regex: "(:(?P<initials>\\w{2,3})(?P<end>[\\s,]))"
-    replace: "[[@{{name}}]]{{end}}"
+  - trigger: ":mblk:"
+    replace: "> [!metablock]+\n - parent:: \n child:: \n related:: \n\n\n\n$|$"
+  - regex: "@(?P<initials>\\w{2,3});"
+    replace: "[[@{{name}}]]"
     vars:
       - name: name
         type: shell
         params:
           cmd: "{{people}} | % { $_.'{{initials}}' };"
+  - triggers: [":block:", ":mb:"]
+    replace: |-
+        ```$|$
+        ```
+    force_clipboard: true
+
+  - triggers: [":code:", ":mc:"]
+    replace: |-
+        `$|$`
+    force_clipboard: true
+
+  - trigger: ":h1:"
+    replace: "#"
+
+  - trigger: ":h2:"
+    replace: "##"
+
+  - trigger: ":h3:"
+    replace: "###"
+
+  - trigger: ":h4:"
+    replace: "####"
+
+  - trigger: ":h5:"
+    replace: "#####"
+
+  - trigger: ":h6:"
+    replace: "######"
+
+  - trigger: ":bold:"
+    replace: "**$|$**"
+
+  - trigger: ":italic:"
+    replace: "*$|$*"
+
+  - trigger: ":strike:"
+    replace: "~~$|$~~"
+
+  - trigger: ":url:"
+    replace: "[$|$]()"
+
+  - triggers: [":image:", ":img:"]
+    replace: "![]($|$)"
+
+  - triggers: [":horizontal:", ":mh:"]
+    replace: "___"
+
+  - triggers: [":task:", ":mt:"]
+    replace: "- [ ] "
+
+  - triggers: [":taskdone:", ":mtd:"]
+    replace: "- [x] "
+  - triggers: [":collapse:", ":mcol:"]
+    replace: |-
+        <details>
+        <summary></summary>
+
+        $|$
+        </details>
+    force_clipboard: true

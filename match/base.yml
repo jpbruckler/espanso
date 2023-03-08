@@ -24,33 +24,38 @@ matches:
         type: date
         params:
           format: "%m/%d/%Y"
-  - trigger: ":shell"
-    replace: "{{output}}"
+  - trigger: ":dtl"
+    replace: "{{timestamp}}"
     vars:
-      - name: output
-        type: shell
+      - name: timestamp
+        type: date
         params:
-          cmd: "echo 'Hello from your shell'"
-  - trigger: ":ts"
+          format: "%F %T"
+  - trigger: ":dtf"
     replace: "{{timestamp}}"
     vars:
       - name: timestamp
         type: date
         params:
           format: "%+"
-  - trigger: ":ld"
-    replace: "—"
-  - trigger: ":copchain"
-    replace: "A 22-inch copper ball chain is included with this purchase."
-  - trigger: ":ogbox"
-    replace: "For an additional fee, this pendant can be shipped in a sturdy, handcrafted origami gift box."
-  - trigger: ":ojs"
-    replace: "Overall jewelry size is "
-  - trigger: ".t"
+  - trigger: ":tt"
     replace: "	"
-  - trigger: ":t"
-    replace: "	"
-  - trigger: ":2t"
+  - trigger: ":2tt"
     replace: "		"
-    
+  - trigger: ":wkn"
+    replace: "{{weekNum}}"
+    vars:
+      - name: weekNum
+        type: date
+        params:
+          format: "%U"
+          locale: "en-GB"
+          offset: -86400
+  - trigger: ":wtc"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "(Invoke-WebRequest -Uri whatthecommit.com/index.txt).Content"
 
