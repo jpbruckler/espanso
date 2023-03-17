@@ -17,21 +17,21 @@ matches:
   # But matches can also be dynamic:
 
   # Print the current date
-  - trigger: ":date"
+  - trigger: ":today"
     replace: "{{mydate}}"
     vars:
       - name: mydate
         type: date
         params:
-          format: "%m/%d/%Y"
-  - trigger: ":dtl"
+          format: "%Y-%m-%d"
+  - trigger: ":now"
     replace: "{{timestamp}}"
     vars:
       - name: timestamp
         type: date
         params:
           format: "%F %T"
-  - trigger: ":dtf"
+  - trigger: ":ts"
     replace: "{{timestamp}}"
     vars:
       - name: timestamp
