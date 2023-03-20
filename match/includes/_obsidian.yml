@@ -94,3 +94,51 @@ matches:
         $|$
         </details>
     force_clipboard: true
+  - triggers: [":tpl-note-title", ":tpl-nt"]
+    replace: "# <% `[[${title}]]` %>"
+  - trigger: ":dv-obj"
+    replace: "let dv = app.plugins.plugins.dataview.api;"
+  - trigger: ":tpl-getpath"
+    replace: "let path  = tp.user.getFolderPath('$|$');"
+  - triggers: [":tp-file-move", ":tpl-fm"]
+    replace: |-
+      if (tp.file.folder(true) != path) {
+        await tp.file.move(`${path}/${title}`)
+      }
+  - trigger: ":tpl-title"
+    replace: |-
+      if (tp.file.title == 'Untitled') {
+        title = await tp.system.prompt("Enter the person's name:");
+        if (title.indexOf("@") == -1) {
+          title = `@${title}`
+        }
+        await tp.file.rename(title);
+      } else {
+        title = tp.file.title
+      }
+  - trigger: ":tpl-block"
+    replace: |-
+      ---
+      <%*
+          let title;
+          if (tp.file.title == 'Untitled') {
+              title = await tp.system.prompt("Enter the file name:");
+              await tp.file.rename(title);
+          } else {
+              title = tp.file.title
+          }
+      -%>
+      fileClass:
+      title:
+      date:
+      created:
+      updated:
+      cc: CC BY-SA 4.0
+      template-version: 0.0
+      aliases:
+      tags:
+      ---
+
+      # <% `[[${title}]]` %>
+  - trigger: ":metablock"
+    replace: "> [!metablock]\n>\nup:: \ndown:: \nsibling:: "

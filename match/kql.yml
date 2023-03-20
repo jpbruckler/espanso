@@ -1,0 +1,7 @@
+matches:
+  - regex: ";k.ago\\((?P<len>\\d{0,2})(?P<unit>[mdh])\\)"
+    replace: "where TimeGenerated > ago({{len}}{{unit}})\n| $|$"
+  - trigger: ";k.bintg"
+    replace: " summarize count() by bin(TimeGenerated, $|$)"
+  - trigger: ";k.bintr"
+    replace: " summarize count() by bin(TimeGenerated, $|$)\n| render timechart"
