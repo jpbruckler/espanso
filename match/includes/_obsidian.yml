@@ -142,3 +142,10 @@ matches:
       # <% `[[${title}]]` %>
   - trigger: ":metablock"
     replace: "> [!metablock]\n>\nup:: \ndown:: \nsibling:: "
+  - trigger: ";dt"
+    replace: " 📅 {{todaydate}}"
+    vars:
+      - name: todaydate
+        type: date
+        params:
+          format: "%Y-%m-%d"
