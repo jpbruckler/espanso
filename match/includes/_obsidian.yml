@@ -149,3 +149,10 @@ matches:
         type: date
         params:
           format: "%Y-%m-%d"
+  - trigger: ";today"
+    replace: "[[{{today}}]]"
+    vars:
+      - name: today
+        type: date
+        params:
+          format: "%Y-%m-%d"
