@@ -25,68 +25,68 @@ matches:
   - regex: ";fnl(?P<num>\\d)"
     label: "Insert a markdown footnote link."
     replace: "[^{{num}}]: "
-  - trigger: ":mblk:"
+  - trigger: ";mblk:"
     replace: "> [!metablock]+\n - parent:: \n child:: \n related:: \n\n\n\n$|$"
-  - regex: "@(?P<initials>\\w{2,3});"
+  - regex: ";@(?P<initials>\\w{2,3})"
     replace: "[[@{{name}}]]"
     vars:
       - name: name
         type: shell
         params:
           cmd: "{{people}} | % { $_.'{{initials}}' };"
-  - triggers: [":block:", ":mb:"]
+  - triggers: [";block", ";mb"]
     replace: |-
         ```$|$
         ```
     force_clipboard: true
 
-  - triggers: [":code:", ":mc:"]
+  - triggers: [";code", ";mc"]
     replace: |-
         `$|$`
     force_clipboard: true
 
-  - trigger: ":h1:"
+  - trigger: ";h1"
     replace: "#"
 
-  - trigger: ":h2:"
+  - trigger: ";h2"
     replace: "##"
 
-  - trigger: ":h3:"
+  - trigger: ";h3"
     replace: "###"
 
-  - trigger: ":h4:"
+  - trigger: ";h4"
     replace: "####"
 
-  - trigger: ":h5:"
+  - trigger: ";h5"
     replace: "#####"
 
-  - trigger: ":h6:"
+  - trigger: ";h6"
     replace: "######"
 
-  - trigger: ":bold:"
+  - trigger: ";bold"
     replace: "**$|$**"
 
-  - trigger: ":italic:"
+  - trigger: ";italic"
     replace: "*$|$*"
 
-  - trigger: ":strike:"
+  - trigger: ";strike"
     replace: "~~$|$~~"
 
-  - trigger: ":url:"
+  - trigger: ";url"
     replace: "[$|$]()"
 
-  - triggers: [":image:", ":img:"]
+  - triggers: [";image", ";img"]
     replace: "![]($|$)"
 
-  - triggers: [":horizontal:", ":mh:"]
+  - triggers: [";horizontal", ";mh"]
     replace: "___"
 
-  - triggers: [":task:", ":mt:"]
+  - triggers: [";task", ";mt"]
     replace: "- [ ] "
 
-  - triggers: [":taskdone:", ":mtd:"]
+  - triggers: [";taskdone", ";mtd"]
     replace: "- [x] "
-  - triggers: [":collapse:", ":mcol:"]
+  - triggers: [";collapse", ";mcol"]
     replace: |-
         <details>
         <summary></summary>
@@ -140,5 +140,5 @@ matches:
       ---
 
       # <% `[[${title}]]` %>
-  - trigger: ":metablock"
+  - trigger: ";metablock"
     replace: "> [!metablock]\n>\nup:: \ndown:: \nsibling:: "

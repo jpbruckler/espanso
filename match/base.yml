@@ -8,41 +8,37 @@
 # Matches are substitution rules: when you type the "trigger" string
 # it gets replaced by the "replace" string.
 matches:
-  # Simple text replacement
-  - trigger: ":espanso"
-    replace: "Hi there!"
-
   # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
 
   # But matches can also be dynamic:
 
   # Print the current date
-  - trigger: ":today"
+  - trigger: ";today"
     replace: "{{mydate}}"
     vars:
       - name: mydate
         type: date
         params:
           format: "%Y-%m-%d"
-  - trigger: ":now"
+  - trigger: ";now"
     replace: "{{timestamp}}"
     vars:
       - name: timestamp
         type: date
         params:
           format: "%F %T"
-  - trigger: ":ts"
+  - trigger: ";ts"
     replace: "{{timestamp}}"
     vars:
       - name: timestamp
         type: date
         params:
           format: "%+"
-  - trigger: ":tt"
+  - trigger: ";tt"
     replace: "	"
-  - trigger: ":2tt"
+  - trigger: ";2tt"
     replace: "		"
-  - trigger: ":wkn"
+  - trigger: ";wkno"
     replace: "{{weekNum}}"
     vars:
       - name: weekNum
@@ -51,11 +47,4 @@ matches:
           format: "%U"
           locale: "en-GB"
           offset: -86400
-  - trigger: ":wtc"
-    replace: "{{output}}"
-    vars:
-      - name: output
-        type: shell
-        params:
-          cmd: "(Invoke-WebRequest -Uri whatthecommit.com/index.txt).Content"
 

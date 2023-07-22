@@ -1,12 +1,12 @@
 matches:
-  - trigger: ":zkts"
+  - trigger: ";zkts"
     replace: "{{timestamp}}"
     vars:
       - name: timestamp
         type: date
         params:
           format: "%Y%m%d%H%M%S"
-  - trigger: ":zkref"
+  - trigger: ";zkref"
     replace: "{{reference}}"
     vars: 
       - name: reference

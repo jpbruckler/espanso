@@ -1,12 +1,12 @@
 matches:
-  - trigger: ":sig"
+  - trigger: ";sig"
     replace: |
       Best,
       John Bruckler
       tw: @jpbruckler
       li: https://www.linkedin.com/in/johnbruckler/
       http: http://jpbruckler.github.io
-  - trigger: ":weekly"
+  - trigger: ";weekly"
     replace: "[14.03] Weekly update - Week {{weekNum}}" 
     vars:
       - name: weekNum
@@ -15,14 +15,14 @@ matches:
           format: "%U"
           locale: "en-GB"
           offset: -86400 
-  - trigger: ":dtmsig"
+  - trigger: ";dtmsig"
     replace: |
       John Bruckler 
       DT Midstream | IT Cybersecurity 
       500 Woodward Ave. Ste. 2900, Detroit, MI 48226 
       [m] 517.513.4312 
       www.dtmidstream.com
-  - trigger: ":phblock"
+  - trigger: ";phblock"
     image_path: "$CONFIG/images/block_sender.gif"
-  - trigger: ":phspam"
+  - trigger: ";phspam"
     replace: 'Thank you for <span style="font-weight: bold">reporting the email</b>. This is not a phishing email, however it would be classified as SPAM. Feel free to delete the email and block the sender (see below) if you do not wish to receive email</span> from this sender in the future.<br />'
