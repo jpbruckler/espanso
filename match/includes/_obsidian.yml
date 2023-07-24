@@ -20,103 +20,45 @@ global_vars:
                 'rh'  = 'Rick Hart';
               }"
 matches:
-  - regex: ";fn(?P<num>\\d)"
-    replace: "[^{{num}}]"
-  - regex: ";fnl(?P<num>\\d)"
-    label: "Insert a markdown footnote link."
-    replace: "[^{{num}}]: "
-  - trigger: ";mblk:"
-    replace: "> [!metablock]+\n - parent:: \n child:: \n related:: \n\n\n\n$|$"
-  - regex: ";@(?P<initials>\\w{2,3})"
-    replace: "[[@{{name}}]]"
+  # Time and date related triggers
+  - trigger: ";dt"
+    replace: " 📅 {{todaydate}}"
     vars:
-      - name: name
-        type: shell
+      - name: todaydate
+        type: date
         params:
-          cmd: "{{people}} | % { $_.'{{initials}}' };"
-  - triggers: [";block", ";mb"]
-    replace: |-
-        ```$|$
-        ```
-    force_clipboard: true
-
-  - triggers: [";code", ";mc"]
-    replace: |-
-        `$|$`
-    force_clipboard: true
-
-  - trigger: ";h1"
-    replace: "#"
-
-  - trigger: ";h2"
-    replace: "##"
-
-  - trigger: ";h3"
-    replace: "###"
-
-  - trigger: ";h4"
-    replace: "####"
-
-  - trigger: ";h5"
-    replace: "#####"
-
-  - trigger: ";h6"
-    replace: "######"
-
-  - trigger: ";bold"
-    replace: "**$|$**"
-
-  - trigger: ";italic"
-    replace: "*$|$*"
-
-  - trigger: ";strike"
-    replace: "~~$|$~~"
-
-  - trigger: ";url"
-    replace: "[$|$]()"
-
-  - triggers: [";image", ";img"]
-    replace: "![]($|$)"
-
-  - triggers: [";horizontal", ";mh"]
-    replace: "___"
-
-  - triggers: [";task", ";mt"]
-    replace: "- [ ] "
-
-  - triggers: [";taskdone", ";mtd"]
-    replace: "- [x] "
-  - triggers: [";collapse", ";mcol"]
-    replace: |-
-        <details>
-        <summary></summary>
-
-        $|$
-        </details>
-    force_clipboard: true
-  - triggers: [":tpl-note-title", ":tpl-nt"]
+          format: "%Y-%m-%d"
+  - trigger: ";today"
+    replace: "[[{{today}}]]"
+    vars:
+      - name: today
+        type: date
+        params:
+          format: "%Y-%m-%d"
+  
+  # Templater triggers
+  - trigger: ";tpl.title"
     replace: "# <% `[[${title}]]` %>"
-  - trigger: ":dv-obj"
+  - trigger: ";tpl.today"
+    replace: "<% today %>"
+  - trigger: ";tpl.dv-obj"
     replace: "let dv = app.plugins.plugins.dataview.api;"
-  - trigger: ":tpl-getpath"
+  - trigger: ";tpl.getpath"
     replace: "let path  = tp.user.getFolderPath('$|$');"
-  - triggers: [":tp-file-move", ":tpl-fm"]
+  - triggers: [":tpl.filemove", ":tpl.fm"]
     replace: |-
       if (tp.file.folder(true) != path) {
         await tp.file.move(`${path}/${title}`)
       }
-  - trigger: ":tpl-title"
+  - trigger: ";tpl.retitle"
     replace: |-
       if (tp.file.title == 'Untitled') {
-        title = await tp.system.prompt("Enter the person's name:");
-        if (title.indexOf("@") == -1) {
-          title = `@${title}`
-        }
+        title = await tp.system.prompt("Enter the name for this note:");
         await tp.file.rename(title);
       } else {
         title = tp.file.title
       }
-  - trigger: ":tpl-block"
+  - trigger: ";tpl.tplrblk"
     replace: |-
       ---
       <%*
@@ -128,17 +70,56 @@ matches:
               title = tp.file.title
           }
       -%>
-      fileClass:
       title:
       date:
       created:
       updated:
-      cc: CC BY-SA 4.0
       template-version: 0.0
       aliases:
       tags:
       ---
 
       # <% `[[${title}]]` %>
-  - trigger: ";metablock"
-    replace: "> [!metablock]\n>\nup:: \ndown:: \nsibling:: "
+
+      > [!meta]+
+      >  - parent:: 
+      >  -  child:: 
+      >  -  related:: 
+      >  -  edited:: <% `[[${today}]]` %>
+
+  # Notebook block triggers
+  - trigger: ";mblk"
+    replace: "> [!meta]+\n- parent:: \nchild:: \nrelated:: \nedited:: [[{{today}}]]\n\n\n$|$"
+    vars:
+      - name: today
+        type: date
+        params:
+          format: "%Y-%m-%d"
+  - trigger: ";mmblk"
+    replace: "> [!meta]+\n- attendees:: \nsummary:: \ncompany:: \nedited:: [[{{today}}]]\nrelated:: \n\n\n$|$"
+    vars:
+      - name: today
+        type: date
+        params:
+          format: "%Y-%m-%d"
+  - trigger: ";block"
+    replace: |-
+        ```$|$
+        ```
+    force_clipboard: true
+  - trigger: ";ilc"
+    replace: |-
+        `$|$`
+    force_clipboard: true
+  
+  # RegEx triggers
+  - regex: ";@(?P<initials>\\w{2,3})"
+    replace: "[[@{{name}}]]"
+    vars:
+      - name: name
+        type: shell
+        params:
+          cmd: "{{people}} | % { $_.'{{initials}}' };"
+  
+  
+  

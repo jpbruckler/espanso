@@ -1,3 +1,4 @@
 filter_title: Obsidian
 extra_includes:
   - "../match/includes/_obsidian.yml"
+  - "../match/includes/_obs-ttrpg.yml"

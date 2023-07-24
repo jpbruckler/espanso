@@ -1,0 +1,22 @@
+matches:
+  - trigger: ";dv.trvform"
+    replace: "`=round({{dstcalc.distance}} * [[{{dstcalc.TransportPage}}]].movement[[[{{dstcalc.party}}]].transportation][[[{{dstcalc.party}}]].speed]/60/24, 2)`"
+    vars:
+      - name: "dstcalc"
+        type: form
+        params: 
+          layout: |
+            Transportation Page: [[TransportPage]]
+            Distance (mi.): [[distance]]
+            Party: [[party]]
+          fields:
+            TransportPage:
+              multiline: false
+              default: "Transportation"
+            name:
+              multiline: false
+            party:
+              type: choice
+              values:
+                - 'Danger Inc'
+                - 'The Party'
