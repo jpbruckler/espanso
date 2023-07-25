@@ -1,6 +1,6 @@
 matches:
   - trigger: ";dv.trvform"
-    replace: "`=round({{dstcalc.distance}} * [[{{dstcalc.TransportPage}}]].movement[[[{{dstcalc.party}}]].transportation][[[{{dstcalc.party}}]].speed]/60/24, 2)`"
+    replace: "`=round({{dstcalc.distance}} * [[{{dstcalc.TransportPage}}]].method[[[{{dstcalc.party}}]].transportation][[[{{dstcalc.party}}]].speed]/60/24, 2)`"
     vars:
       - name: "dstcalc"
         type: form
