@@ -5,7 +5,8 @@ matches:
       - name: output
         type: shell
         params:
-          cmd: "(Invoke-WebRequest -Uri whatthecommit.com/index.txt).Content"
+          cmd: "(Invoke-WebRequest -Uri whatthecommit.com/index.txt -UseBasicParsing).Content.Trim()"
+          shell: "powershell"
   - trigger: ";guid"
     replace: "{{guid}}"
     vars:
@@ -15,7 +16,7 @@ matches:
           cmd: "(New-Guid).Guid"
   - trigger: ";ghd"
     replace: "cd gh:\\"
-  - trigger: ";gha"
-    replace: "cd gh:\\aneurysm"
+  - trigger: ";gho"
+    replace: "cd gh:\\chaotic-neutral"
   - trigger: ";ghe"
     replace: "cd gh:\\espanso"

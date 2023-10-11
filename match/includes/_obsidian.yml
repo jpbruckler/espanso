@@ -120,6 +120,9 @@ matches:
         type: shell
         params:
           cmd: "{{people}} | % { $_.'{{initials}}' };"
+  - regex: ";tkt(?P<ticket>\\d{4})"
+    replace: "[DTMIT-{{ticket}}](https://dtmidstream.atlassian.net/browse/DTMIT-{{ticket}})"
+
   
   
   

@@ -7,7 +7,7 @@ matches:
       li: https://www.linkedin.com/in/johnbruckler/
       http: http://jpbruckler.github.io
   - trigger: ";weekly"
-    replace: "[14.03] Weekly update - Week {{weekNum}}" 
+    replace: "Weekly update - Week {{weekNum}}" 
     vars:
       - name: weekNum
         type: date
