@@ -7,7 +7,7 @@ matches:
         params:
           cmd: "(Invoke-WebRequest -Uri whatthecommit.com/index.txt -UseBasicParsing).Content.Trim()"
           shell: "powershell"
-  - trigger: ";guid"
+  - triggers: [";guid", ";uuid"]
     replace: "{{guid}}"
     vars:
       - name: guid

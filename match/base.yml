@@ -47,13 +47,6 @@ matches:
           format: "%U"
           locale: "en-GB"
           offset: -86400
-  - trigger: ":wtc"
-    replace: "{{output}}"
-    vars:
-      - name: output
-        type: shell
-        params:
-          cmd: "(Invoke-WebRequest -Uri whatthecommit.com/index.txt -UseBasicParsing).Content.Trim()"
   - trigger: ":psh2"
     replace: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiZHRtXFx1NTUzOThiIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvaGFzaCI6IjIyMGIxM2U5LTZjZmUtNDkyNS04NzIxLWQ2OWNhMDkwYjg5MyIsInN1YiI6IlBvd2VyU2hlbGxVbml2ZXJzYWwiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwibmJmIjoxNjg1MDI3NjExLCJleHAiOjE3MTY1NjM1ODAsImlzcyI6Iklyb25tYW5Tb2Z0d2FyZSIsImF1ZCI6IlBvd2VyU2hlbGxVbml2ZXJzYWwifQ.C-8qx2nDXUQJmbdd25aOCrIo5QhTQ83r4N5XiXM_5IU"
 
