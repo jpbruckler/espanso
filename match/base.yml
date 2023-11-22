@@ -40,6 +40,8 @@ matches:
     replace: "		"
   - trigger: ";emd"
     replace: "—"
+  - trigger: ";end"
+    replace: "–"
   - trigger: ";wkno"
     replace: "{{weekNum}}"
     vars:
