@@ -34,84 +34,7 @@ matches:
       - name: today
         type: date
         params:
-          format: "%Y-%m-%d"
-  
-  # Templater triggers
-  - trigger: ";tpl.title"
-    replace: "# <% `[[${title}]]` %>"
-  - trigger: ";tpl.today"
-    replace: "<% today %>"
-  - trigger: ";tpl.dv-obj"
-    replace: "let dv = app.plugins.plugins.dataview.api;"
-  - trigger: ";tpl.getpath"
-    replace: "let path  = tp.user.getFolderPath('$|$');"
-  - triggers: [":tpl.filemove", ":tpl.fm"]
-    replace: |-
-      if (tp.file.folder(true) != path) {
-        await tp.file.move(`${path}/${title}`)
-      }
-  - trigger: ";tpl.retitle"
-    replace: |-
-      if (tp.file.title == 'Untitled') {
-        title = await tp.system.prompt("Enter the name for this note:");
-        await tp.file.rename(title);
-      } else {
-        title = tp.file.title
-      }
-  - trigger: ";tpl.tplrblk"
-    replace: |-
-      ---
-      <%*
-          let title;
-          if (tp.file.title == 'Untitled') {
-              title = await tp.system.prompt("Enter the file name:");
-              await tp.file.rename(title);
-          } else {
-              title = tp.file.title
-          }
-      -%>
-      title:
-      date:
-      created:
-      updated:
-      template-version: 0.0
-      aliases:
-      tags:
-      ---
-
-      # <% `[[${title}]]` %>
-
-      > [!meta]+
-      >  - parent:: 
-      >  -  child:: 
-      >  -  related:: 
-      >  -  edited:: <% `[[${today}]]` %>
-
-  # Notebook block triggers
-  - trigger: ";mblk"
-    replace: "> [!meta]+\n- parent:: \nchild:: \nrelated:: \nedited:: [[{{today}}]]\n\n\n$|$"
-    vars:
-      - name: today
-        type: date
-        params:
-          format: "%Y-%m-%d"
-  - trigger: ";mmblk"
-    replace: "> [!meta]+\n- attendees:: \nsummary:: \ncompany:: \nedited:: [[{{today}}]]\nrelated:: \n\n\n$|$"
-    vars:
-      - name: today
-        type: date
-        params:
-          format: "%Y-%m-%d"
-  - trigger: ";block"
-    replace: |-
-        ```$|$
-        ```
-    force_clipboard: true
-  - trigger: ";ilc"
-    replace: |-
-        `$|$`
-    force_clipboard: true
-  
+          format: "%Y-%m-%d"  
   # RegEx triggers
   - regex: ";@(?P<initials>\\w{2,3})"
     replace: "[[@{{name}}]]"
@@ -120,7 +43,7 @@ matches:
         type: shell
         params:
           cmd: "{{people}} | % { $_.'{{initials}}' };"
-  - regex: ";tkt(?P<ticket>\\d{4})"
+  - regex: ";tkt(?P<ticket>\\d+)!"
     replace: "[DTMIT-{{ticket}}](https://dtmidstream.atlassian.net/browse/DTMIT-{{ticket}})"
 
   
