@@ -17,6 +17,6 @@ matches:
   - trigger: ";ghd"
     replace: "cd gh:\\"
   - trigger: ";gho"
-    replace: "cd gh:\\cipher-sanctum"
+    replace: "cd gh:\\arcane-algorithms"
   - trigger: ";ghe"
     replace: "cd gh:\\espanso"

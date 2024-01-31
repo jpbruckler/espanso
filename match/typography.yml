@@ -1,0 +1,6 @@
+matches:
+  - trigger: ";emd"
+    replace: "—"
+  - trigger: ";end"
+    replace: "–"
+    
