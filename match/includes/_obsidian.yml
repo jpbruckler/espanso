@@ -1,48 +1,11 @@
-global_vars:
-  - name: "people"
-    type: echo
-    params:
-      echo: "@{ 
-                'bb'  = 'Brandi Bruckler';
-                'mb'  = 'Michael Bruckler';
-                'mom' = 'Roxanne Bruckler';
-                'sb'  = 'Sarah Bruckler';
-                'lsm' = 'Laura St Marie';
-                'kra' = 'Kyle Andrus';
-                'sem' = 'Steven Motts'; 
-                'ah'  = 'Alyse Hart';
-                'ba'  = 'Brandyn Adams';
-                'bk'  = 'Brian Kissick';
-                'gr'  = 'Gytis Radvilavicius';
-                'jw'  = 'Jori Walker';
-                'dk'  = 'Dan Karrick';
-                'cb'  = 'Chris Bentley';
-                'rh'  = 'Rick Hart';
-              }"
 matches:
-  # Time and date related triggers
-  - trigger: ";dt"
-    replace: " 📅 {{todaydate}}"
-    vars:
-      - name: todaydate
-        type: date
-        params:
-          format: "%Y-%m-%d"
   - trigger: ";today"
     replace: "[[{{today}}]]"
     vars:
       - name: today
         type: date
         params:
-          format: "%Y-%m-%d"  
-  # RegEx triggers
-  - regex: ";@(?P<initials>\\w{2,3})"
-    replace: "[[@{{name}}]]"
-    vars:
-      - name: name
-        type: shell
-        params:
-          cmd: "{{people}} | % { $_.'{{initials}}' };"
+          format: "%Y-%m-%d"
   - trigger: ";tkt"
     replace: "[{{ticket.id}}](https://dtmidstream.atlassian.net/browse/{{ticket.id}})"
     vars:
@@ -64,7 +27,6 @@ matches:
         params:
           cmd: "'zotero://open-pdf/library/items/{0}?page=1' -f '{{zotlnkform.link}}'.split('/')[-1]"
           shell: powershell
-
 
   
   

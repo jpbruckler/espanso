@@ -1,9 +1,9 @@
 matches:
-  - trigger: ";k.90d"
+  - trigger: ":k.90d"
     replace: "where TimeGenerated > ago(90d)\n| $|$"
-  - trigger: ";k.sumct"
+  - trigger: ":k.sumct"
     replace: " summarize count() by $|$"
-  - trigger: ";k.bintg"
+  - trigger: ":k.bintg"
     replace: " summarize count() by bin(TimeGenerated, $|$)"
-  - trigger: ";k.bintr"
+  - trigger: ":k.bintr"
     replace: " summarize count() by bin(TimeGenerated, $|$)\n| render timechart"

@@ -1,0 +1,29 @@
+matches:
+  # kql
+  - trigger: ":docs.kql"
+    replace: "https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/"
+  - trigger: ":docs.kqlqr"
+    replace: "https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/kql-quick-reference"
+
+  # Automatedlab docs
+  - trigger: ":docs.al"
+    replace: "https://automatedlab.org"
+  
+  # PowerShell Universal Docs
+  - trigger: ":docs.psu"
+    replace: "https://docs.powershelluniversal.com/"
+  
+
+  # Obsidian related
+  - trigger: ":docs.dataview"
+    replace: "https://blacksmithgu.github.io/obsidian-dataview/"
+  - trigger: ":docs.templater"
+    replace: "https://silentvoid13.github.io/Templater/"
+  - trigger: ":discord.obs"
+    replace: "https://discord.gg/obsidianmd"
+  - trigger: ":forum.obs"
+    replace: "https://forum.obsidian.md/"
+  - trigger: ":docs.obs"
+    replace: "https://docs.obsidian.md"
+  - trigger: ":docs.qa"
+    replace: "https://quickadd.obsidian.guide/docs/"

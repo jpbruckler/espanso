@@ -1,5 +1,6 @@
 matches:
-  - trigger: ";wtc"
+  # Fetches a commit message from whatthecommit.com
+  - trigger: ":wtc"
     replace: "{{output}}"
     vars:
       - name: output
@@ -7,16 +8,24 @@ matches:
         params:
           cmd: "(Invoke-WebRequest -Uri whatthecommit.com/index.txt -UseBasicParsing).Content.Trim()"
           shell: "powershell"
-  - triggers: [";guid", ";uuid"]
+  
+  # Directory changes
+  - trigger: ":ghd"
+    replace: "cd gh:\\"
+  - trigger: ":gho"
+    replace: "cd gh:\\arcane-algorithms"
+  - trigger: ":ghe"
+    replace: "cd gh:\\espanso"
+  
+  # Outputs git commit command, with cursor in the message block
+  - trigger: :commit
+    replace: git commit -m "$|$"
+
+  # Outputs new GUID using PowerShell
+  - triggers: [":guid", ":uuid", ":uid"]
     replace: "{{guid}}"
     vars:
       - name: guid
         type: shell
         params:
           cmd: "(New-Guid).Guid"
-  - trigger: ";ghd"
-    replace: "cd gh:\\"
-  - trigger: ";gho"
-    replace: "cd gh:\\arcane-algorithms"
-  - trigger: ";ghe"
-    replace: "cd gh:\\espanso"

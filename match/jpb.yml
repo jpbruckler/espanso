@@ -1,0 +1,31 @@
+matches:
+
+  # Email addresses
+  - trigger: ":e.john"
+    replace: "john@bruckler.org"
+  - trigger: ":e.jpb"
+    replace: "jpbruckler@gmail.com"
+  - trigger: ":e.lich"
+    replace: "lichblast@gmail.com"
+  - trigger: ":e.nyan"
+    replace: "cptnyan@gmail.com"
+  - trigger: ":e.bit"
+    replace: "bitrang3r@pm.me"
+
+  # Socials
+  - trigger: ":me.gh"
+    replace: "https://github.com/jpbruckler"
+  - trigger: ":me.li"
+    replace: "https://www.linkedin.com/in/johnbruckler/"
+  - trigger: ":me.mast"
+    replace: "https://infosec.exchange/@jpbruckler"
+  - trigger: ":me.twt"
+    replace: "https://twitter.com/jpbruckler"
+
+  # Other
+  - trigger: ":me.blog"
+    replace: "https://john.bruckler.org/"
+  - trigger: ":me.notes"
+    replace: "https://notes.bruckler.org/index"
+  - trigger: ":me.gitbk"
+    replace: "https://secopsspectrum.gitbook.io/introduction/"
