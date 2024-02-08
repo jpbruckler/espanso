@@ -1,4 +1,9 @@
 matches:
+  # strangebee
+  - trigger: ":docs.thehive"
+    replace: "https://docs.strangebee.com/thehive/setup/"
+  - trigger: ":docs.cortex"
+    replace: "https://docs.strangebee.com/cortex/"
   # kql
   - trigger: ":docs.kql"
     replace: "https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/"
