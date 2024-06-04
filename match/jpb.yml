@@ -29,3 +29,15 @@ matches:
     replace: "https://notes.bruckler.org/index"
   - trigger: ":me.gitbk"
     replace: "https://secopsspectrum.gitbook.io/introduction/"
+
+  # Email Overload
+  - trigger: ":email"
+    replace: "john@bruckler.org"
+  - trigger: ":email"
+    replace: "jpbruckler@gmail.com"
+  - trigger: ":email"
+    replace: "lichblast@gmail.com"
+  - trigger: ":email"
+    replace: "cptnyan@gmail.com"
+  - trigger: ":email"
+    replace: "bitrang3r@pm.me"

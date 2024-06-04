@@ -7,13 +7,13 @@ matches:
         params:
           format: "%Y-%m-%d"
   - trigger: ";tkt"
-    replace: "[{{ticket.id}}](https://dtmidstream.atlassian.net/browse/{{ticket.id}})"
+    replace: "[DTMIT-{{ticket.id}}](https://dtmidstream.atlassian.net/browse/DTMIT-{{ticket.id}})"
     vars:
       - name: "ticket"
         type: form
         params:
           layout: |
-            Enter [[id]]
+            Enter [[id]] (DTMIT will already be included)
   - trigger: ";zot.lnk"
     replace: "{{opnlnk}}"
     vars:
@@ -27,7 +27,10 @@ matches:
         params:
           cmd: "'zotero://open-pdf/library/items/{0}?page=1' -f '{{zotlnkform.link}}'.split('/')[-1]"
           shell: powershell
-
+  - trigger: ":ss"
+    replace: "§"
+  - trigger: "pshu"
+    replace: "[[§ PowerShell Universal]]"
   
   
   
