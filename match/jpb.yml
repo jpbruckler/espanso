@@ -32,6 +32,8 @@ matches:
 
   # Email Overload
   - trigger: ":email"
+    replace: "john.bruckler@dtmidstream.com"
+  - trigger: ":email"
     replace: "john@bruckler.org"
   - trigger: ":email"
     replace: "jpbruckler@gmail.com"
